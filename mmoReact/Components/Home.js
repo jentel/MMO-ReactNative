@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
+  Button,
   Text,
   View
 } from 'react-native';
@@ -13,8 +14,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class Home extends Component<Props> {
+export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -27,6 +27,14 @@ export default class Home extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Button
+            title = "Click Me"
+            onPress={()=> {
+                this.props.navigation.navigate('Details', {
+                    itemId: 86,
+                    otherParam: 'First Details'
+                });
+            }}/>
       </View>
     );
   }
