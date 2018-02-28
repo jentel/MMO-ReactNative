@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 10,
     },
+    textEntry: {
+      height: 40,
+      margin: 10,
+      borderColor: 'gray', 
+      borderWidth: 1,
+      alignSelf: "stretch"
+    }
   });
 
 export default styles;
