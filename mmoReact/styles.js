@@ -18,7 +18,17 @@ const styles = StyleSheet.create({
       borderColor: 'gray', 
       borderWidth: 1,
       alignSelf: "stretch"
-    }
+    },
+    listContainer: {
+      justifyContent: 'center',
+      flex:1,
+      margin: 10
+    },
+    item: {
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+    },
   });
 
 export default styles;

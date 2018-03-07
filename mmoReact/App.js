@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Home from './Components/Home';
 import Details from './Components/Details';
+import InfoList from './Components/InfoList';
 
 export default class App extends Component {
   render() {
@@ -15,11 +16,14 @@ export default class App extends Component {
 const RootStack = StackNavigator(
   {
     Home: {
-      screen: Home,
+      screen: Home
     },
     Details: {
-      screen: Details,
+      screen: Details
     },
+    List: {
+      screen: InfoList
+    }
   },
   {
     initialRouteName: 'Home',

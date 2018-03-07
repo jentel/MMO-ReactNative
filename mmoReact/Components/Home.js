@@ -27,6 +27,10 @@ export default class Home extends Component {
                       otherParam: 'Home Screen'
                   });
               }}/>}
+        <Button title="Go to List"
+            onPress={() => {
+              this.props.navigation.navigate('List');
+            }}/>
       </View>
     );
   }
