@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, FlatList, Image } from 'react-native';
-// import { List, ListItem } from 'react-native-elements';
+import { Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
 
 import styles from '../styles';
+import ModalView from './InfoListDetail';
 
 export default class InfoList extends Component {
+    constructor() {
+        super();
+        this.state = {
+          modalVisible: false,
+          id: null,
+          selectedItem: null
+        }
+    }
+          
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        return { title: "Users"}
+    }
+      
+    _onPressItem(item) { this.setState({modalVisible: true, selectedItem: item})};
+    _hideModal = () => { this.setState({modalVisible: false})}
 
     FlatListItemSeparator = () => {
         return (
@@ -12,17 +27,19 @@ export default class InfoList extends Component {
         )
     }
 
-    renderItem(data){
+    _renderItem(data){
         let {item, index} = data;
 
         return(
-            <View style={styles.itemBlock}>
-                <Image source={{uri:item.avatar}} style={styles.itemImage} />
-                <View style={styles.itemMeta}>
-                    <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
-                    <Text style={styles.itemLastMessage}>{item.email}</Text>
+            <TouchableHighlight onPress={() => {this._onPressItem(item)}} >
+                <View style={styles.itemBlock}>
+                    <Image source={{uri:item.avatar}} style={styles.itemImage} />
+                    <View style={styles.itemMeta}>
+                        <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
+                        <Text style={styles.itemLastMessage}>{item.email}</Text>
+                    </View>
                 </View>
-            </View>
+            </TouchableHighlight>
         )
     }
 
@@ -30,8 +47,11 @@ export default class InfoList extends Component {
         var customData = require('../ListInfo.json');
         return (
             <View style={styles.listContainer}>
+                <ModalView modalVisible={this.state.modalVisible} 
+                    selectedItem={this.state.selectedItem} 
+                    onDismiss={this._hideModal} />
                 <FlatList data={customData}
-                    renderItem={this.renderItem.bind(this)}
+                    renderItem={this._renderItem.bind(this)}
                     ItemSeparatorComponent = {this.FlatListItemSeparator}
                     keyExtractor={item => item.email} />
             </View>
