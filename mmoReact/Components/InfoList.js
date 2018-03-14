@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
+import { Text, View, TextInput, FlatList, Image, TouchableHighlight, Animated } from 'react-native';
 
 import styles from '../styles';
 import ModalView from './InfoListDetail';
@@ -10,10 +10,11 @@ export default class InfoList extends Component {
         this.state = {
           modalVisible: false,
           id: null,
-          selectedItem: null
-        }
+          selectedItem: null,
+          fadeOut: new Animated.Value(0)
+        };
     }
-          
+
     static navigationOptions = ({ navigation, navigationOptions }) => {
         return { title: "Users"}
     }
@@ -47,9 +48,10 @@ export default class InfoList extends Component {
         var customData = require('../ListInfo.json');
         return (
             <View style={styles.listContainer}>
-                <ModalView modalVisible={this.state.modalVisible} 
+                {this.state.selectedItem && <ModalView modalVisible={this.state.modalVisible} 
                     selectedItem={this.state.selectedItem} 
-                    onDismiss={this._hideModal} />
+                    fadeOut={this.state.fadeOut}
+                    onDismiss={this._hideModal} />}
                 <FlatList data={customData}
                     renderItem={this._renderItem.bind(this)}
                     ItemSeparatorComponent = {this.FlatListItemSeparator}

@@ -33,9 +33,19 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       paddingBottom: 10,
     },
+    itemBlockBio: {
+      flexDirection: 'row',
+      paddingBottom: 10,
+      alignItems: 'center'
+    },
     itemImage: {
       width: 50,
       height: 50,
+      borderRadius: 25,
+    },
+    itemImageBio: {
+      width: 100,
+      height: 100,
       borderRadius: 25,
     },
     itemMeta: {
@@ -44,6 +54,12 @@ const styles = StyleSheet.create({
     },
     itemName: {
       fontSize: 20,
+    },
+    itemDone: {
+      fontSize: 20,
+      marginTop: 20,
+      color: 'black',
+      alignSelf: 'center',
     },
     itemLastMessage: {
       fontSize: 14,

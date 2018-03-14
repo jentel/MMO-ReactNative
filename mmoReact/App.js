@@ -4,7 +4,6 @@ import { StackNavigator } from 'react-navigation';
 import Home from './Components/Home';
 import Details from './Components/Details';
 import InfoList from './Components/InfoList';
-import InfoListDetails from './Components/InfoListDetail';
 
 export default class App extends Component {
   render() {
@@ -24,9 +23,6 @@ const RootStack = StackNavigator(
     },
     List: {
       screen: InfoList
-    },
-    ListInfo: {
-      screen: InfoListDetails
     }
   },
   {
