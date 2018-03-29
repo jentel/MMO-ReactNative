@@ -11,7 +11,7 @@ export default class InfoList extends Component {
           modalVisible: false,
           id: null,
           selectedItem: null,
-          fadeOut: new Animated.Value(0)
+          fadeIn: new Animated.Value(0)
         };
     }
 
@@ -50,7 +50,7 @@ export default class InfoList extends Component {
             <View style={styles.listContainer}>
                 {this.state.selectedItem && <ModalView modalVisible={this.state.modalVisible} 
                     selectedItem={this.state.selectedItem} 
-                    fadeOut={this.state.fadeOut}
+                    fadeIn={this.state.fadeIn}
                     onDismiss={this._hideModal} />}
                 <FlatList data={customData}
                     renderItem={this._renderItem.bind(this)}

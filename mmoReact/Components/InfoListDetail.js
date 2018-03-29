@@ -5,7 +5,7 @@ import styles from '../styles';
 
 export default class InfoListDetail extends Component{
     componentDidMount(){
-            Animated.timing(this.props.fadeOut, {
+            Animated.timing(this.props.fadeIn, {
                 toValue: 1,
                 duration: 3000,
             }).start()
@@ -26,7 +26,7 @@ export default class InfoListDetail extends Component{
                                 <Image source={{uri:this.props.selectedItem.avatar}} style={styles.itemImageBio} />
                                 <Text style={styles.itemName}>{this.props.selectedItem.first_name} {this.props.selectedItem.last_name}</Text>
                             </View>
-                            <Animated.Text style={{fontSize: 20, opacity:this.props.fadeOut}}>{this.props.selectedItem.bio}</Animated.Text>
+                            <Animated.Text style={{fontSize: 20, opacity:this.props.fadeIn}}>{this.props.selectedItem.bio}</Animated.Text>
                             <TouchableHighlight
                                 onPress={() => {
                                     this.props.onDismiss() }}>
