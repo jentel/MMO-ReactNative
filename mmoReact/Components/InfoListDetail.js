@@ -5,10 +5,10 @@ import styles from '../styles';
 
 export default class InfoListDetail extends Component{
     componentDidMount(){
-            Animated.timing(this.props.fadeIn, {
-                toValue: 1,
-                duration: 3000,
-            }).start()
+        Animated.timing(this.props.fadeIn, {
+            toValue: 1,
+            duration: 3000,
+        }).start()
     }
 
     render(){
