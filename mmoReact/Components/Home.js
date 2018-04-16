@@ -6,9 +6,10 @@ import styles from '../styles';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "",
-                  isNavButtonHidden: true
-                 };
+    this.state = { 
+      text: "",
+      isNavButtonHidden: true
+    };
   }
   render() {
     return (
