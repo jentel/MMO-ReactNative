@@ -32,6 +32,11 @@ export default class Home extends Component {
             onPress={() => {
               this.props.navigation.navigate('List');
             }}/>
+        <Button style={{paddingTop: 30}}
+            title="Go to Launch Library"
+            onPress={() => {
+              this.props.navigation.navigate('LaunchLibrary');
+            }}/>
       </View>
     );
   }
