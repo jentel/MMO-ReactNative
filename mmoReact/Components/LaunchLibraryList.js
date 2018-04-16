@@ -9,20 +9,20 @@ export default class LaunchLibraryList extends Component {
         this.state ={ isLoading: true}
       }
     
-    componentDidMount(){
-    return fetch('https://launchlibrary.net/1.3/launch/Falcon')
-        .then((response) => response.json())
-        .then((responseJson) => {
-            this.setState({
-                isLoading: false,
-                dataSource: responseJson.launches,
-            }, function(){
-
-            });
-        })
-        .catch((error) =>{
-            console.error(error);
+      setStateAsync(state) {
+        return new Promise((resolve) => {
+          this.setState(state, resolve)
         });
+      }
+
+    async componentDidMount(){
+        try {
+            let response = await fetch('https://launchlibrary.net/1.3/launch/Falcon');
+            let responseJson = await response.json();
+            await this.setStateAsync({isLoading: false, dataSource: responseJson.launches})
+        } catch(error){
+            console.error(error);
+        }
     }
 
     FlatListItemSeparator = () => {
